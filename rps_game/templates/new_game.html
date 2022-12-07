@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}New Game{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+  <div>
+    <label for="playerA">Player One Name</label>
+    <input name="playerA" id="playerA" required>
+  </div>
+  <div>
+    <label for="playerB">Player Two Name</label>
+    <input name="playerB" id="playerB">
+  </div>
+  <div>
+    <input
+      type="checkbox"
+      id="playerBComputer"
+      name="playerBComputer"
+      value="PlayerBComputer"
+      onchange="computerToggled(this)"
+    >
+    <label for="playerBComputer">Player Two is a Computer</label>
+  </div>
+  <input type="submit" value="Start Game">
+</form>
+
+<!-- little bit of javascript to make the checkbox more fun -->
+<script>
+  const inputPlayerB = document.getElementById("playerB");
+  const inputIsPlayerBComputer = document.getElementById("playerBComputer");
+
+  let historicalPlayerB = ""
+  function disableIfChecked(checked) {
+    if (checked) {
+      historicalPlayerB = inputPlayerB.value
+      inputPlayerB.value = '🖥️'
+      inputPlayerB.disabled = true;
+    } else {
+      inputPlayerB.value = historicalPlayerB
+      inputPlayerB.disabled = false;
+    }
+  }
+
+  function computerToggled(element) {
+    disableIfChecked(element.checked);
+  }
+
+  disableIfChecked(inputIsPlayerBComputer.checked)
+</script>
+
+
+{% endblock %}
