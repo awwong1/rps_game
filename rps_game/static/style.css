@@ -4,6 +4,10 @@ html {
   padding: 1rem;
 }
 
+h2 {
+  font-size: medium;
+}
+
 body {
   max-width: 960px;
   margin: 0 auto;

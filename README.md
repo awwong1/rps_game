@@ -18,7 +18,7 @@ flask --app rps_game init-db
 
 Start the development flask web application server.
 ```bash
-FLASK_APP=rps_game FLASK_DEBUG=true flask run
+flask --app rps_game --debug run
 ```
 
 ## Requirements

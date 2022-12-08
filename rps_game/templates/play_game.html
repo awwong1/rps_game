@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h2>{% block title %}{{game_state}}{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+
+{% if game_state != "Finished" %}
+<form method="post">
+  <div>
+    <input type="radio" id="rock" name="move" value="rock">
+    <label for="rock">Rock</label><br>
+    <input type="radio" id="paper" name="move" value="paper">
+    <label for="paper">Paper</label><br>
+    <input type="radio" id="scissors" name="move" value="scissors">
+    <label for="scissors">Scissors</label><br>
+  </div>
+  <input type="submit" value="Submit" />
+</form>
+{% endif %}
+<ol>
+{% for message in messages %}
+  <li>{{message}}</li>
+{% endfor %}
+</ol>
+
+{{game}}
+
+{% endblock %}

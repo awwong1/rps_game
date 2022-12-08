@@ -26,9 +26,11 @@ def create_app(test_config=None):
 
     # Initialize the database
     from . import db
+
     db.init_app(app)
 
     from . import game
+
     app.register_blueprint(game.bp)
 
     return app
