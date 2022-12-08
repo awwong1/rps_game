@@ -21,6 +21,11 @@ Start the development flask web application server.
 flask --app rps_game --debug run
 ```
 
+Run unit tests
+```bash
+pytest
+```
+
 ## Requirements
 
 The basic requirements for the game are:

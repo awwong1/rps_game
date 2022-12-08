@@ -29,8 +29,10 @@ def create_app(test_config=None):
 
     db.init_app(app)
 
-    from . import game
+    # register the blueprints (routes)
+    from . import game, score
 
     app.register_blueprint(game.bp)
+    app.register_blueprint(score.bp)
 
     return app

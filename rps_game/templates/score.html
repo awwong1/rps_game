@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h2>{% block title %}Score{% endblock %}</h2>
+{% endblock %}
+
+{% block content %}
+<table>
+  <tr><th>Winner</th><th>Player One</th><th>Player Two</th><th>Total Wins</th></tr>
+  {% for score in scores %}
+    <tr><td>{{score['playerWinner']}}</td><td>{{score['playerA']}}</td><td>{{score['playerB']}}</td><td>{{score['wins']}}</td></tr>
+  {% endfor %}
+</table>
+{% endblock %}

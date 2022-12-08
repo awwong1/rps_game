@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
 
 {% block header %}
-<h2>{% block title %}{{game_state}}{% endblock %}</h2>
+<h2>{{game['playerA']}} against {{ game['playerB'] or '🖥️' }}</h2>
+<h3>{% block title %}{{user_facing_state}}{% endblock %}</h3>
 {% endblock %}
 
 {% block content %}
 
-{% if game_state != "Finished" %}
+{% if not game_finished %}
 <form method="post">
   <div>
     <input type="radio" id="rock" name="move" value="rock">
@@ -19,12 +20,28 @@
   <input type="submit" value="Submit" />
 </form>
 {% endif %}
+
 <ol>
 {% for message in messages %}
   <li>{{message}}</li>
 {% endfor %}
 </ol>
 
-{{game}}
+{% if game_finished %}
+<form method="post" action="/">
+  <input type="hidden" name="playerA" value="{{game['playerA']}}">
+  <input type="hidden" name="playerB" value="{{game['playerB'] or '🖥️'}}">
+  <input id="replay-game" type="submit" value="Replay Game with same players?">
+</form>
+<style>
+#replay-game {
+  background: none!important;
+  border: none;
+  padding: 0!important;
+  text-decoration: underline;
+  cursor: pointer;
+}
+</style>
+{% endif %}
 
 {% endblock %}

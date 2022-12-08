@@ -12,7 +12,7 @@
   </div>
   <div>
     <label for="playerB">Player Two Name</label>
-    <input name="playerB" id="playerB">
+    <input name="playerB" id="playerB" required>
   </div>
   <div>
     <input
@@ -29,23 +29,23 @@
 
 <!-- little bit of javascript to make the checkbox more fun -->
 <script>
-  const inputPlayerB = document.getElementById("playerB");
-  const inputIsPlayerBComputer = document.getElementById("playerBComputer");
+  const inputPlayerB = document.getElementById("playerB")
+  const inputIsPlayerBComputer = document.getElementById("playerBComputer")
 
   let historicalPlayerB = ""
   function disableIfChecked(checked) {
     if (checked) {
       historicalPlayerB = inputPlayerB.value
       inputPlayerB.value = '🖥️'
-      inputPlayerB.disabled = true;
+      inputPlayerB.setAttribute('readonly', 'true')
     } else {
       inputPlayerB.value = historicalPlayerB
-      inputPlayerB.disabled = false;
+      inputPlayerB.removeAttribute('readonly')
     }
   }
 
   function computerToggled(element) {
-    disableIfChecked(element.checked);
+    disableIfChecked(element.checked)
   }
 
   disableIfChecked(inputIsPlayerBComputer.checked)
